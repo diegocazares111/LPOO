@@ -1,0 +1,49 @@
+@startuml
+class Bicicleta {
+  -String marca
+  -String modelo
+  -double precio
+  -Rueda ruedaDelantera
+  -Rueda ruedaTrasera
+  -Cuadro cuadro
+  +getMarca(): String
+  +setMarca(String marca): void
+  +getModelo(): String
+  +setModelo(String modelo): void
+  +getPrecio(): double
+  +setPrecio(double precio): void
+  +getRuedaDelantera(): Rueda
+  +setRuedaDelantera(Rueda rueda): void
+  +getRuedaTrasera(): Rueda
+  +setRuedaTrasera(Rueda rueda): void
+  +getCuadro(): Cuadro
+  +setCuadro(Cuadro cuadro): void
+}
+
+class Rueda {
+  -int diametro
+  -String marca
+  -boolean tubeless
+  +getDiametro(): int
+  +setDiametro(int diametro): void
+  +getMarca(): String
+  +setMarca(String marca): void
+  +isTubeless(): boolean
+  +setTubeless(boolean tubeless): void
+}
+
+class Cuadro {
+  -String material
+  -String talla
+  -double peso
+  +getMaterial(): String
+  +setMaterial(String material): void
+  +getTalla(): String
+  +setTalla(String talla): void
+  +getPeso(): double
+  +setPeso(double peso): void
+}
+
+Bicicleta *-- "2" Rueda
+Bicicleta *-- "1" Cuadro
+@enduml

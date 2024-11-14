@@ -1,0 +1,51 @@
+@startuml
+class CuerpoHumano {
+  -double peso
+  -double altura
+  -String tipoSangre
+  -Corazon corazon
+  -Pulmon pulmonIzquierdo
+  -Pulmon pulmonDerecho
+  -Higado higado
+  -Apendice apendice
+  +getters()
+  +setters()
+}
+
+class Corazon {
+  -int ritmoCardiaco
+  -double tamano
+  -String estado
+  +getters()
+  +setters()
+}
+
+class Pulmon {
+  -double capacidad
+  -String posicion
+  -boolean funcional
+  +getters()
+  +setters()
+}
+
+class Higado {
+  -double peso
+  -String estado
+  -double tamano
+  +getters()
+  +setters()
+}
+
+class Apendice {
+  -double longitud
+  -boolean inflamado
+  -String estado
+  +getters()
+  +setters()
+}
+
+CuerpoHumano *-- "1" Corazon
+CuerpoHumano *-- "2" Pulmon
+CuerpoHumano *-- "1" Higado
+CuerpoHumano *-- "1" Apendice
+@enduml
