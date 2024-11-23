@@ -1,0 +1,4 @@
+interface Notificable {
+    void enviarNotificacion(String mensaje);
+    String recibirNotificaciones();
+}
