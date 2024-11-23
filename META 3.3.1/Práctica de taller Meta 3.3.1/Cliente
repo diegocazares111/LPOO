@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Cliente extends Persona implements Reservable, Notificable {
+    private List<String> reservas;
+    private List<String> notificaciones;
+
+    public Cliente(String nombre, String identificacion) {
+        super(nombre, identificacion);
+        this.reservas = new ArrayList<>();
+        this.notificaciones = new ArrayList<>();
+    }
+
+    @Override
+    public void mostrarDetalles() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Identificación: " + identificacion);
+        System.out.println("Reservas activas: " + reservas);
+        System.out.println("Notificaciones pendientes: " + notificaciones);
+    }
+
+    @Override
+    public void realizarReserva(String habitacion) {
+        reservas.add(habitacion);
+        System.out.println("Reserva realizada para la habitación: " + habitacion);
+    }
+
+    @Override
+    public void cancelarReserva(String habitacion) {
+        if (reservas.remove(habitacion)) {
+            System.out.println("Reserva cancelada para la habitación: " + habitacion);
+        } else {
+            System.out.println("No se encontró la reserva para la habitación: " + habitacion);
+        }
+    }
+
+    @Override
+    public void enviarNotificacion(String mensaje) {
+        notificaciones.add(mensaje);
+        System.out.println("Notificación enviada: " + mensaje);
+    }
+
+    @Override
+    public String recibirNotificaciones() {
+        String mensajes = String.join(", ", notificaciones);
+        notificaciones.clear();
+        return mensajes;
+    }
+}
