@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+        Cliente cliente = new Cliente("Juan Pérez", "12345");
+
+        cliente.mostrarDetalles();
+
+        cliente.realizarReserva("101");
+        cliente.realizarReserva("102");
+        cliente.enviarNotificacion("Recuerde su check-in mañana.");
+        cliente.mostrarDetalles();
+
+        System.out.println("Notificaciones recibidas: " + cliente.recibirNotificaciones());
+        cliente.cancelarReserva("101");
+        cliente.mostrarDetalles();
+    }
+}
