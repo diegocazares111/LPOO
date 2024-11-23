@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pedido implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private int id;
+    private List<Producto> productos;
+    private double total;
+
+    public Pedido(int id) {
+        this.id = id;
+        this.productos = new ArrayList<>();
+    }
+
+    public void agregarProducto(Producto producto) {
+        productos.add(producto);
+        calcularTotal();
+    }
+
+    public double calcularTotal() {
+        total = 0;
+        for (Producto producto : productos) {
+            total += producto.getPrecio();
+        }
+        return total;
+    }
+
+    public void mostrarDetalles() {
+        System.out.println("Pedido ID: " + id);
+        for (Producto producto : productos) {
+            System.out.println("Producto: " + producto.getNombre() + ", Precio: $" + producto.getPrecio());
+        }
+        System.out.println("Total: $" + total);
+    }
+
+    // Método para guardar el pedido en un archivo
+    public void guardarPedido() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pedido_" + id + ".dat"))) {
+            out.writeObject(this);
+            System.out.println("Pedido guardado correctamente.");
+        } catch (IOException e) {
+            System.err.println("Error al guardar el pedido: " + e.getMessage());
+        }
+    }
+
+    // Método para cargar un pedido desde un archivo
+    public static Pedido cargarPedido(String archivo) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))) {
+            return (Pedido) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error al cargar el pedido: " + e.getMessage());
+            return null;
+        }
+    }
+}
