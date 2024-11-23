@@ -1,0 +1,18 @@
+public class Main {
+    public static void main(String[] args) {
+        Animal perro = new Perro("Fido", 3);
+        Animal gato = new Gato("Mishi", 2);
+
+        System.out.println(perro.informacion());
+        perro.emitirSonido();
+
+        System.out.println(gato.informacion("Rescatado hace 1 año"));
+        gato.emitirSonido();
+
+        // Enlace dinámico
+        Animal[] animales = {perro, gato};
+        for (Animal animal : animales) {
+            animal.emitirSonido(); // El método correcto se llama en tiempo de ejecución
+        }
+    }
+}
