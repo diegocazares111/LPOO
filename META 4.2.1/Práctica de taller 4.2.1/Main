@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        Producto producto1 = new Producto("Manzana", 1.2);
+        Producto producto2 = new Producto("Pan", 0.8);
+
+        Pedido pedido = new Pedido(1);
+        pedido.agregarProducto(producto1);
+        pedido.agregarProducto(producto2);
+
+        pedido.mostrarDetalles();
+    }
+}
