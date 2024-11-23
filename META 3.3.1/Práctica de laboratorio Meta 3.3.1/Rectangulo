@@ -1,0 +1,33 @@
+class Rectangulo extends Figura implements ConPerimetro, Dibujable {
+    private double base;
+    private double altura;
+
+    public Rectangulo(String nombre, double base, double altura) {
+        super(nombre);
+        this.base = base;
+        this.altura = altura;
+    }
+
+    @Override
+    public double calcularArea() {
+        return base * altura;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (base + altura);
+    }
+
+    @Override
+    public void dibujar() {
+        System.out.println("Dibujando un rectángulo con base " + base + " y altura " + altura);
+    }
+
+    public void mostrarDetalles() {
+        System.out.println("Figura: " + nombre);
+        System.out.println("Base: " + base);
+        System.out.println("Altura: " + altura);
+        System.out.println("Área: " + calcularArea());
+        System.out.println("Perímetro: " + calcularPerimetro());
+    }
+}
