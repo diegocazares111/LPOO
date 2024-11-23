@@ -1,0 +1,4 @@
+interface Reservable {
+    void realizarReserva(String habitacion);
+    void cancelarReserva(String habitacion);
+}
