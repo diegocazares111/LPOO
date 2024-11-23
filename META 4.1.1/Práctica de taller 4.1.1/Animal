@@ -1,0 +1,19 @@
+abstract class Animal {
+    protected String nombre;
+    protected int edad;
+
+    public Animal(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public String informacion() {
+        return "Nombre: " + nombre + ", Edad: " + edad;
+    }
+
+    public String informacion(String extraInfo) {
+        return informacion() + ", Info adicional: " + extraInfo;
+    }
+
+    public abstract void emitirSonido();
+}
